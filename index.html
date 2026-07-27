@@ -1112,8 +1112,43 @@
     </div>
   </footer>
 
+  <!-- ── ABOUT MODAL ── -->
+  <div class="modal-overlay" id="aboutModal" onclick="handleModalClick(event)">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeAboutModal()" aria-label="Close">&times;</button>
+      <h2>About Blasha</h2>
+      <span class="modal-sub">AI-Created Recording Artist &mdash; Purpose Wave Entertainment</span>
+      <div class="modal-divider"></div>
+      <p>Blasha is an AI-created recording artist developed by Purpose Wave Entertainment, representing a new generation of music where creativity, technology, identity, and purpose come together. Her sound is rooted in feel-good R&B, melodic hip-hop, contemporary soul, and confident pop influences. Through warm production, memorable melodies, and honest lyrics, Blasha creates music designed to energize, encourage, and connect with listeners.</p>
+      <p>Blasha presents a strong yet feminine persona. Her confidence is not based on perfection, popularity, or the approval of others. It comes from self-awareness. Although she is young, she understands that knowing who you are can become its own form of power. She recognizes her strengths, accepts that she is still growing, and refuses to let uncertainty prevent her from moving forward with purpose.</p>
+      <p>Her music reflects a woman who is comfortable being both soft and strong. She can be vulnerable without becoming powerless, confident without becoming arrogant, and independent without rejecting meaningful relationships. Blasha does not believe femininity has to be sacrificed in order to demonstrate strength. Instead, she embraces emotional intelligence, personal standards, ambition, self-respect, and grace as essential parts of her identity.</p>
+      <p>Blasha is not interested in reshaping herself to fit society's expectations. She understands that the world often pressures young women to follow trends, imitate popular personalities, or accept identities created by other people. Rather than forcing herself into a mold that was never designed for her, she chooses to define herself. She believes she has the freedom to become the woman she envisions instead of performing a version of herself that makes everyone else comfortable.</p>
+      <p>That independence shapes the themes found throughout her music. Her songs explore confidence, relationships, self-discovery, ambition, emotional boundaries, personal growth, friendship, purpose, and the freedom to live authentically. Even when addressing disappointment or difficult experiences, her music does not remain trapped in bitterness. Blasha focuses on what can be learned, what must be released, and how a person can move forward without losing their identity.</p>
+      <p>Her feel-good sound is not shallow or disconnected from real life. It is music built around resilience. Blasha understands that empowerment is not always loud. Sometimes it is walking away from what no longer fits. Sometimes it is choosing peace instead of unnecessary conflict. Sometimes it is accepting that growth may require changing direction. Her music celebrates those decisions while still giving listeners something they can enjoy, sing along with, and carry into their daily lives.</p>
+      <p>Visually, Blasha combines contemporary fashion, urban elegance, natural beauty, and expressive confidence. Her image can move from polished editorial photography to relaxed everyday moments, reflecting the many dimensions of her personality. She is equally believable onstage, in the recording studio, walking through the city, spending time with friends, or sitting alone in reflection. Each environment reveals another part of an artist who is not limited to a single image or expectation.</p>
+      <p>As an AI-created artist, Blasha also represents the evolving possibilities of entertainment. She is not presented as a replacement for human creativity. She is a creative expression shaped through human direction, storytelling, music production, visual design, and emerging technology. Purpose Wave Entertainment uses her artistry to explore how artificial intelligence can support original music, consistent character development, visual storytelling, and meaningful audience experiences.</p>
+      <p>At the center of Blasha's identity is one clear belief: you do not have to become what the world expects in order to become who you are meant to be. Her music encourages listeners — especially young women — to recognize their value, protect their individuality, and move with confidence even while they are still discovering themselves.</p>
+      <p>Blasha is young, self-aware, feminine, purposeful, and unapologetically her own. She is not chasing a mold. She is creating her own space.</p>
+      <p class="modal-tagline">No filters. No masks. Just truth.</p>
+    </div>
+  </div>
+
   <!-- ── SCRIPTS ── -->
   <script>
+    // About modal
+    function openAboutModal() {
+      document.getElementById('aboutModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeAboutModal() {
+      document.getElementById('aboutModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function handleModalClick(e) {
+      if (e.target === document.getElementById('aboutModal')) closeAboutModal();
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAboutModal(); });
+
     // Nav scroll behavior
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
