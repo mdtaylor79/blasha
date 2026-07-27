@@ -348,8 +348,8 @@
       margin-bottom: 24px;
     }
     .album-cover {
-      width: 120px;
-      height: 120px;
+      width: 200px;
+      height: 200px;
       flex-shrink: 0;
       background: linear-gradient(135deg, #1a1208, #2a1f0a, #111);
       display: flex;
@@ -638,11 +638,14 @@
       gap: 24px;
     }
     .track-card {
+      display: block;
       background: rgba(255,255,255,0.03);
       border: 1px solid rgba(201,168,76,0.1);
       padding: 24px;
       transition: border-color 0.3s, background 0.3s;
       cursor: pointer;
+      color: inherit;
+      text-decoration: none;
     }
     .track-card:hover {
       border-color: rgba(201,168,76,0.4);
@@ -715,6 +718,7 @@
       gap: 4px;
       margin-bottom: 40px;
     }
+    .gallery-strip.row2 { margin-top: 4px; margin-bottom: 40px; }
     .gallery-item {
       aspect-ratio: 3/4;
       background: linear-gradient(135deg, #1a1208, #2a1f0a, #111);
@@ -856,7 +860,7 @@
         <p class="section-label">Latest Release</p>
         <div class="release-card">
           <div class="album-cover">
-            <span class="album-cover-text">BEAUTIFULLY<br>UNFILTERED<br><span style="font-size:8px;letter-spacing:3px;">THE EP</span></span>
+            <img src="img/Blasha - Beautifully Unfiltered Cover.png" alt="Beautifully Unfiltered EP Cover" style="width:100%;height:100%;object-fit:cover;">
           </div>
           <div class="release-info">
             <h3>Beautifully Unfiltered</h3>
@@ -892,42 +896,51 @@
       <a href="#" class="view-all">View All</a>
     </div>
     <div class="tracks-grid">
-      <div class="track-card">
-        <p class="track-number">01 — Beautifully Unfiltered EP</p>
-        <h3 class="track-title">Unfiltered</h3>
-        <p class="track-duration">3:42</p>
+      <a class="track-card" href="https://open.spotify.com/album/0C0QjX71AC30PYho70nt5e?si=Kw-YwZcPTKit2qL-jkod3A" target="_blank" rel="noopener">
+        <p class="track-number">01 — Single</p>
+        <h3 class="track-title">You Cute, But</h3>
         <div class="track-play"><div class="play-btn">&#9654;</div></div>
-      </div>
-      <div class="track-card">
-        <p class="track-number">02 — Beautifully Unfiltered EP</p>
-        <h3 class="track-title">No Masks</h3>
-        <p class="track-duration">3:18</p>
+      </a>
+      <a class="track-card" href="https://open.spotify.com/track/3j5SbHlv7Cr12X0htV2LSP?si=fe07e5945a73422d" target="_blank" rel="noopener">
+        <p class="track-number">02 — Beautifully Unfiltered</p>
+        <h3 class="track-title">Main Character Energy</h3>
         <div class="track-play"><div class="play-btn">&#9654;</div></div>
-      </div>
-      <div class="track-card">
-        <p class="track-number">03 — Beautifully Unfiltered EP</p>
-        <h3 class="track-title">Raw Truth</h3>
-        <p class="track-duration">4:05</p>
+      </a>
+      <a class="track-card" href="https://open.spotify.com/track/7DYWTGCj0NP1ThCTuDXUXl?si=3b62b36919444987" target="_blank" rel="noopener">
+        <p class="track-number">03 — Beautifully Unfiltered</p>
+        <h3 class="track-title">Modern Etiquette</h3>
         <div class="track-play"><div class="play-btn">&#9654;</div></div>
-      </div>
-      <div class="track-card">
-        <p class="track-number">04 — Beautifully Unfiltered EP</p>
-        <h3 class="track-title">The Wave</h3>
-        <p class="track-duration">3:55</p>
+      </a>
+      <a class="track-card" href="https://open.spotify.com/track/7rjDuehfnXk0KEWqqoMHWj?si=ba78f860946a48a6" target="_blank" rel="noopener">
+        <p class="track-number">04 — Beautifully Unfiltered</p>
+        <h3 class="track-title">Not for Everybody</h3>
         <div class="track-play"><div class="play-btn">&#9654;</div></div>
-      </div>
-      <div class="track-card">
-        <p class="track-number">05 — Beautifully Unfiltered EP</p>
-        <h3 class="track-title">Soul Fire</h3>
-        <p class="track-duration">3:29</p>
+      </a>
+      <a class="track-card" href="https://open.spotify.com/track/6SolFaQVr77YuDbIHYhBJp?si=31328ca2e45d42a2" target="_blank" rel="noopener">
+        <p class="track-number">05 — Beautifully Unfiltered</p>
+        <h3 class="track-title">Receipt Book</h3>
         <div class="track-play"><div class="play-btn">&#9654;</div></div>
-      </div>
-      <div class="track-card">
-        <p class="track-number">06 — Beautifully Unfiltered EP</p>
-        <h3 class="track-title">Just Truth</h3>
-        <p class="track-duration">4:12</p>
+      </a>
+      <a class="track-card" href="https://open.spotify.com/track/7rmFfHoPneQCTrB0QM8atJ?si=65c8a9edc7274e90" target="_blank" rel="noopener">
+        <p class="track-number">06 — Beautifully Unfiltered</p>
+        <h3 class="track-title">Clouds Don't Ask Permission</h3>
         <div class="track-play"><div class="play-btn">&#9654;</div></div>
-      </div>
+      </a>
+      <a class="track-card" href="https://open.spotify.com/track/1XKzsoFA9zj6zhuFto9lFc?si=5d89f443f7794781" target="_blank" rel="noopener">
+        <p class="track-number">07 — Beautifully Unfiltered</p>
+        <h3 class="track-title">I Knew Better</h3>
+        <div class="track-play"><div class="play-btn">&#9654;</div></div>
+      </a>
+      <a class="track-card" href="https://open.spotify.com/track/2IzD3j3KtGQTPQXj2AYSuf?si=9e58c6b836934448" target="_blank" rel="noopener">
+        <p class="track-number">08 — Beautifully Unfiltered</p>
+        <h3 class="track-title">Too Much</h3>
+        <div class="track-play"><div class="play-btn">&#9654;</div></div>
+      </a>
+      <a class="track-card" href="https://open.spotify.com/track/06Hn9d2IaehMIjtj3sCNzW?si=794b22ab711e441e" target="_blank" rel="noopener">
+        <p class="track-number">09 — Beautifully Unfiltered</p>
+        <h3 class="track-title">After the Applause</h3>
+        <div class="track-play"><div class="play-btn">&#9654;</div></div>
+      </a>
     </div>
   </section>
 
@@ -937,11 +950,18 @@
     <h2>Moments</h2>
     <p>Behind the music, behind the art</p>
     <div class="gallery-strip">
-      <div class="gallery-item"><span class="gallery-ph">Photo 1</span></div>
-      <div class="gallery-item"><span class="gallery-ph">Photo 2</span></div>
-      <div class="gallery-item"><span class="gallery-ph">Photo 3</span></div>
-      <div class="gallery-item"><span class="gallery-ph">Photo 4</span></div>
-      <div class="gallery-item"><span class="gallery-ph">Photo 5</span></div>
+      <div class="gallery-item"><img src="img/gallery_image_1.png" alt="Blasha gallery 1"></div>
+      <div class="gallery-item"><img src="img/gallery_image_2.png" alt="Blasha gallery 2"></div>
+      <div class="gallery-item"><img src="img/gallery_image_3.png" alt="Blasha gallery 3"></div>
+      <div class="gallery-item"><img src="img/gallery_image_4.png" alt="Blasha gallery 4"></div>
+      <div class="gallery-item"><img src="img/gallery_image_5.png" alt="Blasha gallery 5"></div>
+    </div>
+    <div class="gallery-strip row2">
+      <div class="gallery-item"><img src="img/gallery_image_6.png" alt="Blasha gallery 6"></div>
+      <div class="gallery-item"><img src="img/gallery_image_7.png" alt="Blasha gallery 7"></div>
+      <div class="gallery-item"><img src="img/gallery_image_8.png" alt="Blasha gallery 8"></div>
+      <div class="gallery-item"><img src="img/gallery_image_9.png" alt="Blasha gallery 9"></div>
+      <div class="gallery-item"><img src="img/gallery_image_10.png" alt="Blasha gallery 10"></div>
     </div>
     <a href="#" class="btn btn-outline-gold">View Full Gallery</a>
   </section>
