@@ -965,15 +965,16 @@
 
       /* ── nav ── */
       nav {
-        padding: 14px 20px;
+        padding: 16px 20px;
         width: 100%;
         box-sizing: border-box;
-        background: rgba(10,10,10,0.92) !important;
-        backdrop-filter: blur(8px);
+        background: rgba(10,10,10,0.95) !important;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
       }
       .nav-logo { font-size: 22px; }
-      .nav-right { flex-shrink: 0; gap: 12px; }
-      .nav-social, .nav-divider { display: none; }
+      .nav-right { flex-shrink: 0; gap: 12px; display: flex !important; align-items: center; }
+      .nav-social, .nav-divider { display: none !important; }
       .nav-links { display: none; }
       .nav-links.open {
         display: flex;
@@ -985,12 +986,19 @@
         background: rgba(10,10,10,0.98);
         align-items: center;
         justify-content: center;
-        gap: 32px;
+        gap: 36px;
         z-index: 200;
         box-sizing: border-box;
       }
-      .nav-links.open a { font-size: 14px; letter-spacing: 4px; }
-      .nav-toggle { display: flex; z-index: 300; flex-shrink: 0; }
+      .nav-links.open a { font-size: 15px; letter-spacing: 4px; }
+      .nav-toggle {
+        display: flex !important;
+        z-index: 300;
+        flex-shrink: 0;
+        padding: 6px;
+        cursor: pointer;
+      }
+      .nav-toggle span { background: var(--white); width: 24px; height: 2px; }
 
       /* ── hero ── */
       #hero { align-items: flex-end; }
@@ -998,24 +1006,16 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: 35% center;
+        object-position: center center;
       }
       .hero-content {
         padding: 0 20px 110px;
         width: 100%;
         box-sizing: border-box;
-        align-items: flex-start;
+        align-items: center;
+        text-align: center;
       }
-      .hero-mobile-name {
-        display: block;
-        font-family: 'Dancing Script', cursive;
-        font-size: 56px;
-        color: var(--white);
-        line-height: 1;
-        margin-bottom: 8px;
-        text-shadow: 0 2px 20px rgba(0,0,0,0.8);
-      }
-      .hero-tagline { text-align: left; }
+      .hero-tagline { text-align: center; }
       .hero-side-text { display: none; }
 
       /* ── content / layout ── */
@@ -1081,7 +1081,6 @@
     <div class="hero-bg"></div>
     <img class="hero-img" src="img/Blasha Hero image2.jpg" alt="Blasha">
     <div class="hero-content">
-      <span class="hero-mobile-name">Blasha</span>
       <p class="hero-tagline">No Filters. No Masks. Just Truth.</p>
       <div class="hero-buttons">
         <a href="#music" class="btn btn-gold">&#9654;&nbsp; Listen Now</a>
