@@ -738,6 +738,89 @@
       text-transform: uppercase;
     }
 
+    /* ─── ABOUT MODAL ─── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.88);
+      z-index: 500;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      backdrop-filter: blur(6px);
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: #111;
+      border: 1px solid rgba(201,168,76,0.25);
+      max-width: 780px;
+      width: 100%;
+      max-height: 88vh;
+      overflow-y: auto;
+      padding: 56px 60px;
+      position: relative;
+      scrollbar-width: thin;
+      scrollbar-color: var(--gold-dark) transparent;
+    }
+    .modal-box::-webkit-scrollbar { width: 4px; }
+    .modal-box::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 2px; }
+    .modal-close {
+      position: absolute;
+      top: 20px; right: 24px;
+      background: none;
+      border: none;
+      color: var(--gray);
+      font-size: 28px;
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+    .modal-close:hover { color: var(--gold); }
+    .modal-box h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .modal-box .modal-sub {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 32px;
+      display: block;
+    }
+    .modal-box p {
+      font-size: 13px;
+      color: var(--gray-light);
+      line-height: 1.95;
+      margin-bottom: 20px;
+    }
+    .modal-box .modal-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-style: italic;
+      color: var(--gold);
+      letter-spacing: 2px;
+      margin-top: 32px;
+      margin-bottom: 0;
+    }
+    .modal-divider {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      margin: 28px 0;
+    }
+    @media (max-width: 768px) {
+      .modal-box { padding: 40px 28px; }
+      .modal-box h2 { font-size: 26px; }
+    }
+
     /* ─── MOBILE NAV TOGGLE ─── */
     .nav-toggle {
       display: none;
@@ -877,8 +960,10 @@
         <!-- Replace above with: <img class="about-artist-img" src="images/blasha-performing.jpg" alt="Blasha performing"> -->
         <div class="about-content">
           <p class="section-label">About Blasha</p>
-          <p>Blasha is more than music — she's a movement. With a voice that cuts through the noise and lyrics that speak to the soul, she represents the new wave of fearless, unapologetic artistry.</p>
-          <a href="#about" class="btn btn-outline-gold" style="font-size:10px;padding:10px 22px;">Learn More</a>
+          <p>Blasha is an AI-created recording artist developed by Purpose Wave Entertainment. Her sound blends feel-good R&B, contemporary soul, melodic hip-hop, and pop to create music that is uplifting, confident, feminine, and emotionally honest.</p>
+          <p>She represents a young woman who is still growing but already understands the importance of self-awareness, purpose, and identity. Her music explores empowerment, relationships, ambition, self-respect, growth, and authenticity.</p>
+          <p style="font-style:italic;color:var(--gold);font-size:12px;letter-spacing:1px;">No filters. No masks. Just truth.</p>
+          <button onclick="openAboutModal()" class="btn btn-outline-gold" style="font-size:10px;padding:10px 22px;margin-top:8px;background:transparent;cursor:pointer;">Learn More</button>
         </div>
       </div>
 
