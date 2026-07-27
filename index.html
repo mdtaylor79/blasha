@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BLASHA — Beautifully Unfiltered</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── RESET & BASE ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #e2c97e;
+      --gold-dark: #9b7d30;
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark2: #1a1a1a;
+      --white: #ffffff;
+      --gray: #888888;
+      --gray-light: #cccccc;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--black);
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    ul { list-style: none; }
+
+    /* ─── UTILITY ─── */
+    .gold { color: var(--gold); }
+    .serif { font-family: 'Cormorant Garamond', serif; }
+    .script { font-family: 'Dancing Script', cursive; }
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--black);
+      border: 1px solid var(--gold);
+    }
+    .btn-gold:hover { background: var(--gold-light); border-color: var(--gold-light); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid var(--white);
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.1); }
+    .btn-outline-gold {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+    }
+    .btn-outline-gold:hover { background: rgba(201,168,76,0.1); }
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .view-all {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--white);
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 2px;
+      display: inline-block;
+      transition: color 0.2s;
+    }
+    .view-all:hover { color: var(--gold); }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, transparent 100%);
+      backdrop-filter: blur(0px);
+      transition: background 0.4s, backdrop-filter 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(12px);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--white);
+      font-style: italic;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gray-light);
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0; right: 0;
+      height: 1px;
+      background: var(--gold);
+    }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .nav-social {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+    .nav-social a {
+      color: var(--gray-light);
+      transition: color 0.2s;
+      font-size: 15px;
+    }
+    .nav-social a:hover { color: var(--gold); }
+    .nav-divider {
+      width: 1px;
+      height: 20px;
+      background: rgba(255,255,255,0.2);
+    }
+    .cart-icon {
+      font-size: 13px;
+      color: var(--gray-light);
+      cursor: pointer;
+      position: relative;
+    }
+    .cart-icon:hover { color: var(--gold); }
+    .cart-count {
+      font-size: 10px;
+      font-weight: 600;
+      margin-left: 4px;
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.85) 100%);
+    }
+    /* Decorative gold brush strokes */
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      top: 30%; right: 5%;
+      width: 180px; height: 3px;
+      background: linear-gradient(to right, transparent, var(--gold-dark), transparent);
+      transform: rotate(-15deg);
+      opacity: 0.6;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      bottom: 25%; right: 8%;
+      width: 120px; height: 2px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      transform: rotate(10deg);
+      opacity: 0.5;
+    }
+    /* Placeholder artist image area */
+    .hero-image-placeholder {
+      position: absolute;
+      right: 0; top: 0; bottom: 0;
+      width: 60%;
+      background: linear-gradient(135deg, #1a1208 0%, #2a1f0a 30%, #111 60%, #0a0a0a 100%);
+      clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-image-placeholder .placeholder-text {
+      color: rgba(201,168,76,0.15);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 80px;
+      font-style: italic;
+      font-weight: 700;
+      letter-spacing: 10px;
+      user-select: none;
+      margin-left: 15%;
+    }
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 40px 100px;
+    }
+    .hero-subtitle {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .hero-title-main {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(72px, 10vw, 120px);
+      font-weight: 700;
+      line-height: 0.9;
+      color: var(--gold);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .hero-title-script {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(56px, 8vw, 96px);
+      color: var(--white);
+      line-height: 1;
+      display: block;
+      margin-top: -8px;
+    }
+    .hero-tagline {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--gray-light);
+      margin: 24px 0 40px;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .hero-side-text {
+      position: absolute;
+      right: 48px;
+      bottom: 80px;
+      z-index: 2;
+      text-align: right;
+    }
+    .hero-side-text p {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      line-height: 2.2;
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.4);
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .hero-scroll::after {
+      content: '';
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(201,168,76,0.6), transparent);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0%, 100% { opacity: 0.3; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.2); }
+    }
+
+    /* ─── CONTENT SECTION ─── */
+    #content {
+      background: var(--dark);
+      padding: 80px 0 0;
+    }
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-top: 1px solid rgba(201,168,76,0.15);
+    }
+    .content-col {
+      padding: 60px 48px;
+      border-right: 1px solid rgba(201,168,76,0.1);
+    }
+    .content-col:last-child { border-right: none; }
+
+    /* Latest Release */
+    .release-card {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+    .album-cover {
+      width: 120px;
+      height: 120px;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, #1a1208, #2a1f0a, #111);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .album-cover::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201,168,76,0.1), transparent);
+    }
+    .album-cover-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--gold);
+      text-align: center;
+      z-index: 1;
+    }
+    .album-cover img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .release-info h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .release-info .ep-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .release-info p {
+      font-size: 12px;
+      color: var(--gray-light);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    /* Shows */
+    .show-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .show-item:first-of-type { padding-top: 0; }
+    .show-date {
+      flex-shrink: 0;
+      text-align: center;
+      width: 48px;
+    }
+    .show-date .month {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .show-date .day {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--white);
+    }
+    .show-details { flex: 1; }
+    .show-details h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .show-details .venue-city {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .show-ticket-btn {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 8px 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .show-ticket-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .shows-view-all { margin-top: 28px; }
+
+    /* About */
+    .about-col { position: relative; overflow: hidden; }
+    .about-artist-img {
+      position: absolute;
+      right: 0; top: 0; bottom: 0;
+      width: 45%;
+      object-fit: cover;
+      opacity: 0.4;
+    }
+    .about-artist-placeholder {
+      position: absolute;
+      right: 0; top: 0; bottom: 0;
+      width: 45%;
+      background: linear-gradient(135deg, #1a1208, #2a1f0a, #111);
+      opacity: 0.5;
+    }
+    .about-content { position: relative; z-index: 1; max-width: 60%; }
+    .about-content p {
+      font-size: 13px;
+      color: var(--gray-light);
+      line-height: 1.9;
+      margin-bottom: 28px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--black);
+      border-top: 1px solid rgba(201,168,76,0.15);
+      padding: 60px 80px 40px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: auto 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 48px;
+    }
+    .footer-logo { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+    .pw-logo {
+      width: 60px;
+      height: 60px;
+    }
+    .pw-logo-text {
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      line-height: 1.4;
+    }
+    .footer-section h5 {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .email-form {
+      display: flex;
+      gap: 0;
+    }
+    .email-form input {
+      flex: 1;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-right: none;
+      color: var(--white);
+      padding: 10px 14px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .email-form input::placeholder { color: var(--gray); }
+    .email-form input:focus { border-color: var(--gold); }
+    .email-form button {
+      background: var(--gold);
+      color: var(--black);
+      border: 1px solid var(--gold);
+      padding: 10px 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .email-form button:hover { background: var(--gold-light); }
+    .footer-desc {
+      font-size: 12px;
+      color: var(--gray);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    .footer-social {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-social a {
+      color: var(--gray);
+      font-size: 18px;
+      transition: color 0.2s;
+    }
+    .footer-social a:hover { color: var(--gold); }
+    .footer-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gray);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .footer-bottom p {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .footer-bottom-links {
+      display: flex;
+      gap: 28px;
+    }
+    .footer-bottom-links a {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray);
+      transition: color 0.2s;
+    }
+    .footer-bottom-links a:hover { color: var(--gold); }
+
+    /* ─── SVG ICONS ─── */
+    .icon { display: inline-block; width: 1em; height: 1em; vertical-align: middle; fill: currentColor; }
+
+    /* ─── GOLD ACCENT LINE ─── */
+    .gold-line {
+      display: block;
+      width: 48px;
+      height: 2px;
+      background: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    /* ─── MUSIC SECTION ─── */
+    #music {
+      background: var(--dark2);
+      padding: 100px 80px;
+    }
+    #music .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 48px;
+    }
+    #music h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+    .tracks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 24px;
+    }
+    .track-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(201,168,76,0.1);
+      padding: 24px;
+      transition: border-color 0.3s, background 0.3s;
+      cursor: pointer;
+    }
+    .track-card:hover {
+      border-color: rgba(201,168,76,0.4);
+      background: rgba(201,168,76,0.05);
+    }
+    .track-number {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .track-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .track-duration {
+      font-size: 10px;
+      color: var(--gray);
+      letter-spacing: 1px;
+    }
+    .track-play {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-top: 20px;
+    }
+    .play-btn {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(201,168,76,0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 12px;
+      transition: all 0.2s;
+    }
+    .track-card:hover .play-btn {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    /* ─── GALLERY BANNER ─── */
+    #gallery-banner {
+      padding: 80px;
+      background: var(--black);
+      text-align: center;
+    }
+    #gallery-banner h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    #gallery-banner p {
+      font-size: 12px;
+      color: var(--gray);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+    .gallery-strip {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 4px;
+      margin-bottom: 40px;
+    }
+    .gallery-item {
+      aspect-ratio: 3/4;
+      background: linear-gradient(135deg, #1a1208, #2a1f0a, #111);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .gallery-item:hover { transform: scale(1.02); z-index: 1; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+    .gallery-item .gallery-ph {
+      color: rgba(201,168,76,0.2);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ─── MOBILE NAV TOGGLE ─── */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--white);
+      transition: all 0.3s;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      nav { padding: 16px 28px; }
+      .nav-links { gap: 20px; }
+      .hero-content { padding: 0 40px; }
+      .content-grid { grid-template-columns: 1fr; }
+      .content-col { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.1); }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+      #music, footer { padding: 60px 40px; }
+      #gallery-banner { padding: 60px 40px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-social, .nav-divider { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(10,10,10,0.98);
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+        z-index: 200;
+      }
+      .nav-links.open a { font-size: 14px; letter-spacing: 4px; }
+      .nav-toggle { display: flex; z-index: 300; }
+      .hero-content { padding: 0 24px; }
+      .hero-title-main { font-size: 56px; }
+      .hero-title-script { font-size: 48px; }
+      .hero-image-placeholder { width: 100%; clip-path: none; opacity: 0.3; }
+      .hero-side-text { display: none; }
+      footer { padding: 48px 24px 32px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+      .gallery-strip { grid-template-columns: repeat(3, 1fr); }
+      .tracks-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVIGATION ── -->
+  <nav id="navbar">
+    <div class="nav-logo">Blasha</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#hero" class="active">Home</a></li>
+      <li><a href="#music">Music</a></li>
+      <li><a href="#videos">Videos</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="nav-social">
+        <a href="#" title="Instagram" aria-label="Instagram">
+          <svg class="icon" style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="#" title="YouTube" aria-label="YouTube">
+          <svg class="icon" style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <a href="#" title="Spotify" aria-label="Spotify">
+          <svg class="icon" style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="12" cy="12" r="10"/><path d="M8 13.5c2.5-1 5.5-.8 7.5.5M7.5 10.5c3-1.2 6.5-1 9 .7M8.5 16.5c2-0.8 4.5-.7 6 .5"/>
+          </svg>
+        </a>
+        <a href="#" title="Apple Music" aria-label="Apple Music">
+          <svg class="icon" style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 14.5a4.5 4.5 0 1 1 4.5-4.5 4.5 4.5 0 0 1-4.5 4.5zm2-8.5H10v4l3.5 2 1-1.73L12 10.7V8z"/>
+          </svg>
+        </a>
+      </div>
+      <div class="nav-toggle" id="navToggle" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <img class="hero-img" src="img/Blasha Hero.jpg" alt="Blasha">
+    <div class="hero-content">
+      <p class="hero-tagline">No Filters. No Masks. Just Truth.</p>
+      <div class="hero-buttons">
+        <a href="#music" class="btn btn-gold">&#9654;&nbsp; Listen Now</a>
+        <a href="#videos" class="btn btn-outline">Watch Video</a>
+      </div>
+    </div>
+    <div class="hero-scroll" onclick="document.getElementById('content').scrollIntoView({behavior:'smooth'})">
+      Scroll
+    </div>
+  </section>
+
+  <!-- ── CONTENT: RELEASE / SHOWS / ABOUT ── -->
+  <section id="content">
+    <div class="content-grid">
+
+      <!-- Latest Release -->
+      <div class="content-col" id="latest">
+        <p class="section-label">Latest Release</p>
+        <div class="release-card">
+          <div class="album-cover">
+            <span class="album-cover-text">BEAUTIFULLY<br>UNFILTERED<br><span style="font-size:8px;letter-spacing:3px;">THE EP</span></span>
+          </div>
+          <div class="release-info">
+            <h3>Beautifully Unfiltered</h3>
+            <p class="ep-label">The EP</p>
+            <p>Raw. Real. Revealing.<br>The debut EP from Blasha.<br>Every song is a piece<br>of the truth.</p>
+            <a href="#music" class="btn btn-gold" style="font-size:10px;padding:10px 22px;">Stream Now</a>
+          </div>
+        </div>
+        <a href="#music" class="view-all">View All Music</a>
+      </div>
+
+      <!-- About -->
+      <div class="content-col about-col" id="about">
+        <div class="about-artist-placeholder"></div>
+        <!-- Replace above with: <img class="about-artist-img" src="images/blasha-performing.jpg" alt="Blasha performing"> -->
+        <div class="about-content">
+          <p class="section-label">About Blasha</p>
+          <p>Blasha is more than music — she's a movement. With a voice that cuts through the noise and lyrics that speak to the soul, she represents the new wave of fearless, unapologetic artistry.</p>
+          <a href="#about" class="btn btn-outline-gold" style="font-size:10px;padding:10px 22px;">Learn More</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── MUSIC / TRACKLIST ── -->
+  <section id="music">
+    <div class="section-header">
+      <div>
+        <p class="section-label">Discography</p>
+        <h2>Music</h2>
+      </div>
+      <a href="#" class="view-all">View All</a>
+    </div>
+    <div class="tracks-grid">
+      <div class="track-card">
+        <p class="track-number">01 — Beautifully Unfiltered EP</p>
+        <h3 class="track-title">Unfiltered</h3>
+        <p class="track-duration">3:42</p>
+        <div class="track-play"><div class="play-btn">&#9654;</div></div>
+      </div>
+      <div class="track-card">
+        <p class="track-number">02 — Beautifully Unfiltered EP</p>
+        <h3 class="track-title">No Masks</h3>
+        <p class="track-duration">3:18</p>
+        <div class="track-play"><div class="play-btn">&#9654;</div></div>
+      </div>
+      <div class="track-card">
+        <p class="track-number">03 — Beautifully Unfiltered EP</p>
+        <h3 class="track-title">Raw Truth</h3>
+        <p class="track-duration">4:05</p>
+        <div class="track-play"><div class="play-btn">&#9654;</div></div>
+      </div>
+      <div class="track-card">
+        <p class="track-number">04 — Beautifully Unfiltered EP</p>
+        <h3 class="track-title">The Wave</h3>
+        <p class="track-duration">3:55</p>
+        <div class="track-play"><div class="play-btn">&#9654;</div></div>
+      </div>
+      <div class="track-card">
+        <p class="track-number">05 — Beautifully Unfiltered EP</p>
+        <h3 class="track-title">Soul Fire</h3>
+        <p class="track-duration">3:29</p>
+        <div class="track-play"><div class="play-btn">&#9654;</div></div>
+      </div>
+      <div class="track-card">
+        <p class="track-number">06 — Beautifully Unfiltered EP</p>
+        <h3 class="track-title">Just Truth</h3>
+        <p class="track-duration">4:12</p>
+        <div class="track-play"><div class="play-btn">&#9654;</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── GALLERY ── -->
+  <section id="gallery-banner" id="gallery">
+    <p class="section-label">Gallery</p>
+    <h2>Moments</h2>
+    <p>Behind the music, behind the art</p>
+    <div class="gallery-strip">
+      <div class="gallery-item"><span class="gallery-ph">Photo 1</span></div>
+      <div class="gallery-item"><span class="gallery-ph">Photo 2</span></div>
+      <div class="gallery-item"><span class="gallery-ph">Photo 3</span></div>
+      <div class="gallery-item"><span class="gallery-ph">Photo 4</span></div>
+      <div class="gallery-item"><span class="gallery-ph">Photo 5</span></div>
+    </div>
+    <a href="#" class="btn btn-outline-gold">View Full Gallery</a>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer id="contact">
+    <div class="footer-grid">
+
+      <!-- Logo -->
+      <div class="footer-logo">
+        <img src="img/PWR_ENT_LOGO_NO_BG.png" alt="Purpose Wave Entertainment" style="width:100px;height:auto;">
+      </div>
+
+      <!-- Stay Connected -->
+      <div class="footer-section">
+        <h5>Stay Connected</h5>
+        <p class="footer-desc">Join the wave. Get exclusive updates, new music, and more.</p>
+        <form class="email-form" onsubmit="handleSubscribe(event)">
+          <input type="email" placeholder="Enter your email" aria-label="Email address" />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+
+      <!-- Follow -->
+      <div class="footer-section">
+        <h5>Follow Blasha</h5>
+        <div class="footer-social">
+          <a href="#" title="Instagram" aria-label="Instagram">
+            <svg style="width:20px;height:20px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+            </svg>
+          </a>
+          <a href="#" title="YouTube" aria-label="YouTube">
+            <svg style="width:20px;height:20px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <a href="#" title="TikTok" aria-label="TikTok">
+            <svg style="width:20px;height:20px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+            </svg>
+          </a>
+          <a href="#" title="Spotify" aria-label="Spotify">
+            <svg style="width:20px;height:20px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <circle cx="12" cy="12" r="10"/><path d="M8 13.5c2.5-1 5.5-.8 7.5.5M7.5 10.5c3-1.2 6.5-1 9 .7M8.5 16.5c2-0.8 4.5-.7 6 .5"/>
+            </svg>
+          </a>
+          <a href="#" title="Apple Music" aria-label="Apple Music">
+            <svg style="width:20px;height:20px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm2 13H10v-4l3.5 2 1-1.73L12 9.7V7h2v8z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Purpose Wave Entertainment. All Rights Reserved.</p>
+      <nav class="footer-bottom-links" aria-label="Legal links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- ── SCRIPTS ── -->
+  <script>
+    // Nav scroll behavior
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Mobile nav toggle
+    function toggleNav() {
+      const links = document.getElementById('navLinks');
+      links.classList.toggle('open');
+    }
+    // Close nav on link click
+    document.querySelectorAll('#navLinks a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('open');
+      });
+    });
+
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('section[id], footer[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(l => l.classList.remove('active'));
+          const activeLink = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+          if (activeLink) activeLink.classList.add('active');
+        }
+      });
+    }, { threshold: 0.4 });
+    sections.forEach(s => observer.observe(s));
+
+    // Email subscribe
+    function handleSubscribe(e) {
+      e.preventDefault();
+      const input = e.target.querySelector('input');
+      const btn = e.target.querySelector('button');
+      if (input.value) {
+        btn.textContent = 'Joined!';
+        btn.style.background = '#2a6e2a';
+        input.value = '';
+        setTimeout(() => {
+          btn.textContent = 'Subscribe';
+          btn.style.background = '';
+        }, 3000);
+      }
+    }
+
+    // Track card play interaction
+    document.querySelectorAll('.track-card').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.track-card').forEach(c => c.style.borderColor = '');
+        card.style.borderColor = 'rgba(201,168,76,0.6)';
+      });
+    });
+  </script>
+
+</body>
+</html>
