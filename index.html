@@ -301,6 +301,7 @@
       color: rgba(255,255,255,0.6);
       line-height: 2.2;
     }
+    .hero-mobile-name { display: none; }
     .hero-scroll {
       position: absolute;
       bottom: 40px;
@@ -959,19 +960,28 @@
       #gallery { padding: 60px 40px; }
     }
     @media (max-width: 768px) {
-      /* ── prevent horizontal overflow ── */
-      html, body { overflow-x: hidden; max-width: 100vw; }
+      /* ── prevent horizontal overflow without breaking position:fixed ── */
+      body { overflow-x: clip; }
 
       /* ── nav ── */
-      nav { padding: 16px 20px; width: 100%; box-sizing: border-box; }
-      .nav-right { flex-shrink: 0; }
-      .nav-links, .nav-social, .nav-divider { display: none; }
+      nav {
+        padding: 14px 20px;
+        width: 100%;
+        box-sizing: border-box;
+        background: rgba(10,10,10,0.92) !important;
+        backdrop-filter: blur(8px);
+      }
+      .nav-logo { font-size: 22px; }
+      .nav-right { flex-shrink: 0; gap: 12px; }
+      .nav-social, .nav-divider { display: none; }
+      .nav-links { display: none; }
       .nav-links.open {
         display: flex;
         flex-direction: column;
         position: fixed;
-        top: 0; left: 0; right: 0; bottom: 0;
-        width: 100vw;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
         background: rgba(10,10,10,0.98);
         align-items: center;
         justify-content: center;
@@ -988,22 +998,39 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: center center;
-        left: 0; right: 0;
+        object-position: 35% center;
       }
-      .hero-content { padding: 0 20px 100px; width: 100%; box-sizing: border-box; }
+      .hero-content {
+        padding: 0 20px 110px;
+        width: 100%;
+        box-sizing: border-box;
+        align-items: flex-start;
+      }
+      .hero-mobile-name {
+        display: block;
+        font-family: 'Dancing Script', cursive;
+        font-size: 56px;
+        color: var(--white);
+        line-height: 1;
+        margin-bottom: 8px;
+        text-shadow: 0 2px 20px rgba(0,0,0,0.8);
+      }
+      .hero-tagline { text-align: left; }
       .hero-side-text { display: none; }
 
       /* ── content / layout ── */
       footer { padding: 48px 20px 32px; width: 100%; box-sizing: border-box; }
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
       .gallery-strip { grid-template-columns: repeat(2, 1fr); }
       .tracks-grid { grid-template-columns: 1fr; }
       #music, #videos, #gallery { padding: 60px 20px; }
-      .video-card iframe { width: 100% !important; }
+      .video-card { padding: 12px; }
+      .video-card iframe { width: 100% !important; height: 220px !important; }
       .release-card { flex-direction: column; }
-      .album-cover { width: 100%; height: 200px; }
+      .album-cover { width: 100%; height: 220px; }
+      .about-content { max-width: 100% !important; }
+      .about-artist-placeholder { display: none; }
     }
   </style>
 </head>
@@ -1054,6 +1081,7 @@
     <div class="hero-bg"></div>
     <img class="hero-img" src="img/Blasha Hero.jpg" alt="Blasha">
     <div class="hero-content">
+      <span class="hero-mobile-name">Blasha</span>
       <p class="hero-tagline">No Filters. No Masks. Just Truth.</p>
       <div class="hero-buttons">
         <a href="#music" class="btn btn-gold">&#9654;&nbsp; Listen Now</a>
