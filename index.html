@@ -8,6 +8,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
+    /* ─── SCROLL OFFSET FOR FIXED NAV ─── */
+    section[id], footer[id], div[id] { scroll-margin-top: 80px; }
+
     /* ─── RESET & BASE ─── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -738,6 +741,53 @@
       text-transform: uppercase;
     }
 
+    /* ─── VIDEOS SECTION ─── */
+    #videos {
+      background: var(--black);
+      padding: 100px 80px;
+      border-top: 1px solid rgba(201,168,76,0.15);
+    }
+    #videos .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 48px;
+    }
+    #videos h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+    .video-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+    }
+    .video-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(201,168,76,0.1);
+      padding: 20px;
+      transition: border-color 0.3s;
+    }
+    .video-card:hover { border-color: rgba(201,168,76,0.4); }
+    .video-card iframe { display: block; max-width: 100%; }
+    .video-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 14px;
+    }
+    @media (max-width: 1024px) {
+      #videos { padding: 60px 40px; }
+      .video-card iframe { width: 100% !important; height: auto !important; min-height: 240px; }
+    }
+
     /* ─── ABOUT MODAL ─── */
     .modal-overlay {
       display: none;
@@ -884,30 +934,31 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="#hero" class="active">Home</a></li>
       <li><a href="#music">Music</a></li>
+      <li><a href="#videos">Videos</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-right">
       <div class="nav-social">
-        <a href="#" title="Instagram" aria-label="Instagram">
-          <svg class="icon" style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
-          </svg>
-        </a>
-        <a href="#" title="YouTube" aria-label="YouTube">
-          <svg class="icon" style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/>
-          </svg>
-        </a>
-        <a href="#" title="Spotify" aria-label="Spotify">
+        <a href="https://open.spotify.com/artist/78gmVnSVMKE4AWb1to5T8I?si=Tgrl_HklQx6bfIsRft_NXg" target="_blank" rel="noopener" title="Spotify" aria-label="Spotify">
           <svg class="icon" style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
             <circle cx="12" cy="12" r="10"/><path d="M8 13.5c2.5-1 5.5-.8 7.5.5M7.5 10.5c3-1.2 6.5-1 9 .7M8.5 16.5c2-0.8 4.5-.7 6 .5"/>
           </svg>
         </a>
-        <a href="#" title="Apple Music" aria-label="Apple Music">
+        <a href="https://music.apple.com/us/artist/blasha/6776554651" target="_blank" rel="noopener" title="Apple Music" aria-label="Apple Music">
           <svg class="icon" style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
             <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 14.5a4.5 4.5 0 1 1 4.5-4.5 4.5 4.5 0 0 1-4.5 4.5zm2-8.5H10v4l3.5 2 1-1.73L12 10.7V8z"/>
+          </svg>
+        </a>
+        <a href="https://music.amazon.com/artists/B08BNML2W4/blasha" target="_blank" rel="noopener" title="Amazon Music" aria-label="Amazon Music">
+          <svg class="icon" style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M4 16s4 2 8 2 8-2 8-2"/><path d="M12 4C8 4 5 7 5 10s2 5 4 6"/><path d="M12 4c4 0 7 3 7 6s-2 5-4 6"/><circle cx="12" cy="10" r="2"/>
+          </svg>
+        </a>
+        <a href="https://www.iheart.com/artist/blasha-50960217/" target="_blank" rel="noopener" title="iHeart Radio" aria-label="iHeart Radio">
+          <svg class="icon" style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/>
           </svg>
         </a>
       </div>
@@ -1028,6 +1079,22 @@
     </div>
   </section>
 
+  <!-- ── VIDEOS ── -->
+  <section id="videos">
+    <div class="section-header">
+      <div>
+        <p class="section-label">Watch</p>
+        <h2>Videos</h2>
+      </div>
+    </div>
+    <div class="video-grid">
+      <div class="video-card">
+        <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="371" style="width:660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/music-video/am-i-trippin-feat-blasha/6792144559"></iframe>
+        <p class="video-label">Am I Trippin' (feat. Blasha) &mdash; Apple Music</p>
+      </div>
+    </div>
+  </section>
+
   <!-- ── GALLERY ── -->
   <section id="gallery">
     <p class="section-label">Gallery</p>
@@ -1047,7 +1114,7 @@
       <div class="gallery-item"><img src="img/gallery_image_9.png" alt="Blasha gallery 9"></div>
       <div class="gallery-item"><img src="img/gallery_image_10.png" alt="Blasha gallery 10"></div>
     </div>
-    <a href="#" class="btn btn-outline-gold">View Full Gallery</a>
+    <a href="#gallery" class="btn btn-outline-gold">View Full Gallery</a>
   </section>
 
   <!-- ── FOOTER ── -->
@@ -1071,31 +1138,46 @@
 
       <!-- Follow -->
       <div class="footer-section">
-        <h5>Follow Blasha</h5>
-        <div class="footer-social">
+        <h5>Listen &amp; Follow</h5>
+        <div class="footer-social" style="flex-wrap:wrap;gap:16px;">
+          <a href="https://open.spotify.com/artist/78gmVnSVMKE4AWb1to5T8I?si=Tgrl_HklQx6bfIsRft_NXg" target="_blank" rel="noopener" title="Spotify" aria-label="Spotify">
+            <svg style="width:22px;height:22px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <circle cx="12" cy="12" r="10"/><path d="M8 13.5c2.5-1 5.5-.8 7.5.5M7.5 10.5c3-1.2 6.5-1 9 .7M8.5 16.5c2-0.8 4.5-.7 6 .5"/>
+            </svg>
+          </a>
+          <a href="https://music.apple.com/us/artist/blasha/6776554651" target="_blank" rel="noopener" title="Apple Music" aria-label="Apple Music">
+            <svg style="width:22px;height:22px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm2 13H10v-4l3.5 2 1-1.73L12 9.7V7h2v8z"/>
+            </svg>
+          </a>
+          <a href="https://music.amazon.com/artists/B08BNML2W4/blasha?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_6NKtZuYBnvf3yeHoN53NngkqA" target="_blank" rel="noopener" title="Amazon Music" aria-label="Amazon Music">
+            <svg style="width:22px;height:22px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M4 16s4 2 8 2 8-2 8-2"/><path d="M12 4C8 4 5 7 5 10s2 5 4 6"/><path d="M12 4c4 0 7 3 7 6s-2 5-4 6"/><circle cx="12" cy="10" r="2"/>
+            </svg>
+          </a>
+          <a href="https://link.deezer.com/s/33WLtmz8M7Vd06o42Cb9H" target="_blank" rel="noopener" title="Deezer" aria-label="Deezer">
+            <svg style="width:22px;height:22px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <rect x="2" y="14" width="4" height="3" rx="0.5"/><rect x="7" y="11" width="4" height="6" rx="0.5"/><rect x="12" y="8" width="4" height="9" rx="0.5"/><rect x="17" y="5" width="4" height="12" rx="0.5"/>
+            </svg>
+          </a>
+          <a href="https://www.iheart.com/artist/blasha-50960217/" target="_blank" rel="noopener" title="iHeart Radio" aria-label="iHeart Radio">
+            <svg style="width:22px;height:22px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/>
+            </svg>
+          </a>
           <a href="#" title="Instagram" aria-label="Instagram">
-            <svg style="width:20px;height:20px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <svg style="width:22px;height:22px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
               <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
             </svg>
           </a>
-          <a href="#" title="YouTube" aria-label="YouTube">
-            <svg style="width:20px;height:20px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <a href="https://www.youtube.com/channel/UC2mjXUuaBxSHtEfM7AaLGPg" target="_blank" rel="noopener" title="YouTube" aria-label="YouTube">
+            <svg style="width:22px;height:22px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
               <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/>
             </svg>
           </a>
           <a href="#" title="TikTok" aria-label="TikTok">
-            <svg style="width:20px;height:20px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <svg style="width:22px;height:22px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
               <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
-            </svg>
-          </a>
-          <a href="#" title="Spotify" aria-label="Spotify">
-            <svg style="width:20px;height:20px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-              <circle cx="12" cy="12" r="10"/><path d="M8 13.5c2.5-1 5.5-.8 7.5.5M7.5 10.5c3-1.2 6.5-1 9 .7M8.5 16.5c2-0.8 4.5-.7 6 .5"/>
-            </svg>
-          </a>
-          <a href="#" title="Apple Music" aria-label="Apple Music">
-            <svg style="width:20px;height:20px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-              <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm2 13H10v-4l3.5 2 1-1.73L12 9.7V7h2v8z"/>
             </svg>
           </a>
         </div>
@@ -1160,9 +1242,15 @@
       const links = document.getElementById('navLinks');
       links.classList.toggle('open');
     }
-    // Close nav on link click
+    // Smooth scroll + close mobile nav on link click
     document.querySelectorAll('#navLinks a').forEach(link => {
-      link.addEventListener('click', () => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
         document.getElementById('navLinks').classList.remove('open');
       });
     });
